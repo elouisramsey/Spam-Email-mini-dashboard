@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Router, Routes } from 'react-router-dom'
+
+import NavIndex from 'Layouts/Nav'
+import HomeIndex from 'Pages/Home/HomeIndex';
+import User from 'Pages/Home/User';
+import RequestIndex from 'Pages/Requests/RequestIndex';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='h-screen flex'>
+      <NavIndex />
+      <Routes>
+        <Route path='/' element={<HomeIndex />} />
+        <Route path='/user/:id' element={<User />} />
+        <Route path='/requests' element={<RequestIndex />} />
+      </Routes>
     </div>
-  );
+  )
 }
 
 export default App;
